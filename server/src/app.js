@@ -1,6 +1,7 @@
 import express from "express";
 import logger from "../logger.js";
 import morgan from "morgan";
+import taskRouter from "./routes/task.route.js";
 
 const app = express();
 const morganFormat = ":method :url :status :response-time ms";
@@ -25,8 +26,7 @@ app.use(
 );
 
 //Routes
-app.get("/", (req, res) => {
-  res.status(200).json("Server is running fine!");
-});
+
+app.use("/api/v1/tasks", taskRouter);
 
 export default app;
